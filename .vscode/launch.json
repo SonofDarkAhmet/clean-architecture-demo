@@ -1,0 +1,18 @@
+{
+  "configurations": [
+    {
+      "name": ".NET WebAPI",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-webapi",
+      "program": "${workspaceFolder}/src/CleanArchitecture.WebApi/bin/Debug/net8.0/CleanArchitecture.WebApi.dll",
+      "cwd": "${workspaceFolder}/src/CleanArchitecture.WebApi",
+
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+        "uriFormat": "%s/swagger"
+      }
+    }
+  ]
+}

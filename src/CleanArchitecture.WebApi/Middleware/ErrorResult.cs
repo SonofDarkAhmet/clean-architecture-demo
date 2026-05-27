@@ -1,0 +1,24 @@
+﻿using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+
+namespace CleanArchitecture.WebApi.Middleware;
+
+public class ErrorStatusCode
+{
+    public int Statuscode { get; set; }
+
+    public override string ToString()
+    {
+        return JsonConvert.SerializeObject(this);
+    }
+}
+
+public sealed class ErrorResult : ErrorStatusCode
+{
+    public string Message { get; set;}
+}
+
+public sealed class ValidationErrorDetails : ErrorStatusCode
+{
+    public IEnumerable<string> Errors { get; set; }
+}

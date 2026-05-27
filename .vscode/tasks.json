@@ -1,0 +1,31 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "build-webapi",
+			"type": "process",
+			"command": "dotnet",
+			"args": [
+				"build",
+				"src/CleanArchitecture.WebApi/CleanArchitecture.WebApi.csproj"
+			],
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "sqlproj: Build CleanArchitectureDb",
+			"type": "process",
+			"command": "dotnet",
+			"args": [
+				"build",
+				"CleanArchitectureDb/CleanArchitectureDb.sqlproj"
+			],
+			"problemMatcher": "$sqlproj-problem-matcher",
+			"isBackground": true,
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "Builds the CleanArchitectureDb SQL project"
+		}
+	]
+}

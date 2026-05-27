@@ -1,0 +1,9 @@
+{
+  "files.exclude": {
+    "**/bin": true,
+    "**/obj": true,
+    "**/.vs": true,
+    "**/node_modules": true
+  },
+  "dataworkspace.excludedProjects": ["CleanArchitectureDb/CleanArchitectureDb.sqlproj"]
+}
