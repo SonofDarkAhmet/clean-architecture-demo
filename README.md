@@ -1,5 +1,22 @@
 # Clean Architecture
 
+## 📁 Assumed Folder Structure
+
+```
+CLEAN-ARCH-TRAIN/
+├── src/
+│   ├── CleanArchitecture.WebApi/
+│   ├── Core/
+│   │   └── CleanArchitecture.Application/
+│   └── External/
+│       └── CleanArchitecture.Persistance/
+├── test/
+│   └── CleanArchitecture.UnitTest/
+└── CleanArchitecture.sln
+```
+
+---
+
 ## .NET CLI Commands
 
 ### 🧹 Cleanup
@@ -8,7 +25,7 @@
 rm -rf *
 # ⚠️ Removes all files and folders in the current directory (destructive)
 
- dotnet clean
+dotnet clean
 # Cleans build outputs (bin/obj folders)
 ```
 
@@ -20,7 +37,7 @@ rm -rf *
 dotnet restore
 # Restores NuGet packages
 
- dotnet build
+dotnet build
 # Builds the project/solution
 ```
 
@@ -32,7 +49,7 @@ dotnet restore
 dotnet new list
 # Lists available templates
 
- dotnet new sln -n CleanArchitecture --format sln
+dotnet new sln -n CleanArchitecture --format sln
 # Creates a solution file
 ```
 
@@ -44,7 +61,7 @@ dotnet new list
 dotnet new webapi -n CleanArchitecture.WebApi -f net8.0 --use-controllers --use-program-main --force
 # Creates a Web API project
 
- dotnet run --project src/CleanArchitecture.WebApi
+dotnet run --project src/CleanArchitecture.WebApi
 # Runs the Web API project
 ```
 
@@ -64,7 +81,7 @@ dotnet dev-certs https --trust
 ```bash
 dotnet new class \
   -n AppDbContext \
-  -o "src/External/CleanArchitecture.Persistance/Context"
+  -o src/External/CleanArchitecture.Persistance/Context
 # Creates a new class in the specified folder
 ```
 
@@ -75,7 +92,7 @@ dotnet new class \
 #### Install EF Core SQL Server provider
 
 ```bash
-dotnet add "src/External/CleanArchitecture.Persistance/CleanArchitecture.Persistance.csproj" \
+dotnet add src/External/CleanArchitecture.Persistance/CleanArchitecture.Persistance.csproj \
   package Microsoft.EntityFrameworkCore.SqlServer --version 8.*
 ```
 
@@ -105,31 +122,36 @@ dotnet ef database update \
 
 ### 🔌 Database Connection (Team Setup)
 
-The committed connection string in `src/CleanArchitecture.WebApi/appsettings.json` defaults to **LocalDB**:
+Connection string location:
+
+```
+src/CleanArchitecture.WebApi/appsettings.json
+```
+
+Default:
 
 ```
 Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CleanArchitectureDb;Integrated Security=True;TrustServerCertificate=True
 ```
 
-LocalDB ships with the .NET SDK / Visual Studio, so this works out-of-the-box on most Windows dev machines with **no SQL Server install required**. The database name (`CleanArchitectureDb`) is the same for everyone — only the *server* may differ per developer.
+---
 
-**Do not commit your personal server name into `appsettings.json`.** If you use a different SQL Server (e.g. `SQLEXPRESS`, a named instance, or a remote server), override the connection string locally using one of the following — both take precedence over `appsettings.json` with no code changes:
-
-**Option A — User Secrets (recommended for local dev, never committed):**
+#### Override (User Secrets — recommended)
 
 ```bash
-dotnet user-secrets set "ConnectionStrings:SqlServer" "Data Source=.\SQLEXPRESS;Initial Catalog=CleanArchitectureDb;Integrated Security=True;TrustServerCertificate=True" \
-  --project src/CleanArchitecture.WebApi
+dotnet user-secrets set "ConnectionStrings:SqlServer" \
+"Data Source=.\SQLEXPRESS;Initial Catalog=CleanArchitectureDb;Integrated Security=True;TrustServerCertificate=True" \
+--project src/CleanArchitecture.WebApi
 ```
 
-**Option B — Environment variable (great for CI / Docker; `__` maps to the nested key):**
+---
+
+#### Override (Environment variable)
 
 ```bash
 # PowerShell
 $env:ConnectionStrings__SqlServer = "Data Source=.\SQLEXPRESS;Initial Catalog=CleanArchitectureDb;Integrated Security=True;TrustServerCertificate=True"
 ```
-
-After overriding, run the `dotnet ef database update` command above to create the database on your chosen server.
 
 ---
 
@@ -138,21 +160,21 @@ After overriding, run the `dotnet ef database update` command above to create th
 #### Create test project
 
 ```bash
-dotnet new xunit -n CleanArchitecture.UnitTest -f net8.0
+dotnet new xunit -n CleanArchitecture.UnitTest -f net8.0 -o test/CleanArchitecture.UnitTest
 ```
 
 #### Add project reference
 
 ```bash
-dotnet add "C:\dev\clean-arch-train\src\CleanArchitecture.WebApi\CleanArchitecture.WebApi.csproj" \
-  reference "C:\dev\clean-arch-train\src\Core\CleanArchitecture.Application\CleanArchitecture.Application.csproj"
+dotnet add src/CleanArchitecture.WebApi/CleanArchitecture.WebApi.csproj \
+  reference src/Core/CleanArchitecture.Application/CleanArchitecture.Application.csproj
 ```
 
 #### Run tests
 
 ```bash
 cd test/CleanArchitecture.UnitTest
- dotnet test
+dotnet test
 ```
 
 ---
