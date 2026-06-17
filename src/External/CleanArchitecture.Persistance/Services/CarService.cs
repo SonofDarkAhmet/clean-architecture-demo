@@ -19,7 +19,7 @@ public sealed class CarService : ICarService
     private readonly ICarRepository _carRepository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
-    
+
     public CarService(
         AppDbContext context,
         IMapper mapper,
@@ -31,11 +31,11 @@ public sealed class CarService : ICarService
         _carRepository = carRepository;
         _unitOfWork = unitOfWork;
     }
-    
+
     public async Task CreateAsync(CreateCarCommand request, CancellationToken cancellationToken)
     {
         Car car = _mapper.Map<Car>(request);
-        
+
         //await _context.Set<Car>().AddAsync(car, cancellationToken);
         //await _context. SaveChangesAsync(cancellationToken);
 
@@ -46,9 +46,8 @@ public sealed class CarService : ICarService
     public async Task<PaginationResult<Car>> GetAllAsync(GetAllCarQuery request, CancellationToken cancellationToken)
     {
         PaginationResult<Car> cars = await _carRepository
-        .GetWhere(p => p.Name.ToLower().Contains(request.Search.ToLower()))
+        .Where(p => p.Name.ToLower().Contains(request.Search.ToLower()))
         .ToPagedListAsync(request.PageNumber, request.PageSize, cancellationToken);
         return cars;
     }
 }
- 
