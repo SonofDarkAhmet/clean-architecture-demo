@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Entity Framework Core Generic Pagination</Title>
+    <Version>8.0.1</Version>
+    <Authors>Taner Saydam</Authors>
+    <Company>Taner Saydam</Company>
+    <Copyright>Copyright 2023</Copyright>
+    <RepositoryUrl>https://github.com/TanerSaydam/EntityFrameworkCorePagination.Nuget</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>pagination entityframeworkcore</PackageTags>
+    <PackageReleaseNotes>Fixed Readme</PackageReleaseNotes>
+    <PackageIcon>icon.jpg</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Description>With this package you can paginate all your list.</Description>
+    <AssemblyVersion>8.0.1</AssemblyVersion>
+    <FileVersion>8.0.1</FileVersion>
+    <PackageId>TS.EntityFrameworkCore.Pagination</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="icon.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

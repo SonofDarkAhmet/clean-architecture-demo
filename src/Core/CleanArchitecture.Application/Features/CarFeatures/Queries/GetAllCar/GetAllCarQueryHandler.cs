@@ -1,10 +1,11 @@
 ﻿using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Application.Services;
+using EntityFrameworkCorePagination.Nuget.Pagination;
 using MediatR;
 
 namespace CleanArchitecture.Application.Features.CarFeatures.Queries.GetAllCar;
 
-public class GetAllCarQueryHandler: IRequestHandler<GetAllCarQuery, IList<Car>>
+public class GetAllCarQueryHandler: IRequestHandler<GetAllCarQuery, PaginationResult<Car>>
 {
     private readonly ICarService _carService;
 
@@ -13,9 +14,9 @@ public class GetAllCarQueryHandler: IRequestHandler<GetAllCarQuery, IList<Car>>
         _carService = carService;
     }
 
-    public async Task<IList<Car>> Handle(GetAllCarQuery request, CancellationToken cancellationToken)
+    public async Task<PaginationResult<Car>> Handle(GetAllCarQuery request, CancellationToken cancellationToken)
     {
-        IList<Car> cars = await _carService.GetAllAsync(request, cancellationToken);
+        PaginationResult<Car> cars = await _carService.GetAllAsync(request, cancellationToken);
         return cars;
     }
 }
