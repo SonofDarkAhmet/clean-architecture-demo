@@ -11,7 +11,7 @@ namespace CleanArchitecture.Presentation.Controllers;
 
 public sealed class CarsController : ApiController
 {
-    public CarsController(IMediator mediator) : base(mediator) {}
+    public CarsController(IMediator mediator) : base(mediator){}
 
     [HttpPost("[action]")]
     public async Task<IActionResult> Create(CreateCarCommand request, CancellationToken cancellationToken)
