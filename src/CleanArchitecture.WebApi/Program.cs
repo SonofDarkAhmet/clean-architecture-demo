@@ -3,6 +3,7 @@ using CleanArchitecture.Application.Behaviors;
 using CleanArchitecture.Persistance.Context;
 using CleanArchitecture.Application.Services;
 using CleanArchitecture.Persistance.Services;
+using CleanArchitecture.Infrastructure.Services;
 using CleanArchitecture.Persistance.Repositories;
 using CleanArchitecture.Domain.Repositories;
 using CleanArchitecture.WebApi.Middleware;
@@ -25,6 +26,7 @@ public class Program
 
         builder.Services.AddScoped<ICarService, CarService>();
         builder.Services.AddScoped<IAuthService, AuthService>();
+        builder.Services.AddScoped<IMailService, MailService>();
 
         builder.Services.AddTransient<ExceptionMiddleware>();
         builder.Services.AddScoped<IUnitOfWork>(srv => srv.GetRequiredService<AppDbContext>());
