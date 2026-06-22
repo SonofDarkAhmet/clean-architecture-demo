@@ -7,6 +7,7 @@ using CleanArchitecture.Infrastructure.Services;
 using CleanArchitecture.Persistance.Repositories;
 using CleanArchitecture.Domain.Repositories;
 using CleanArchitecture.WebApi.Middleware;
+using CleanArchitecture.WebApi.OptionsSetup;
 using CleanArchitecture.Domain.Entities;
 
 using FluentValidation;
@@ -31,6 +32,10 @@ public class Program
         builder.Services.AddTransient<ExceptionMiddleware>();
         builder.Services.AddScoped<IUnitOfWork>(srv => srv.GetRequiredService<AppDbContext>());
         builder.Services.AddScoped<ICarRepository, CarRepository>();
+
+        builder.Services.ConfigureOptions<JwtOptionsSetup>();
+        builder.Services.ConfigureOptions<JwtBearerOptionsSetup>();
+        builder.Services.AddAuthentication().AddJwtBearer();
 
         builder.Services.AddAutoMapper(typeof(CleanArchitecture.Persistance.AssemblyReference).Assembly);
         
