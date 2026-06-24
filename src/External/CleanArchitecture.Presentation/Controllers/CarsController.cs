@@ -1,10 +1,11 @@
-﻿using CleanArchitecture.Domain.DTOs;
-using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Application.Features.CarFeatures.Commands.CreateCar;
+﻿using CleanArchitecture.Application.Features.CarFeatures.Commands.CreateCar;
 using CleanArchitecture.Application.Features.CarFeatures.Queries.GetAllCar;
+using CleanArchitecture.Domain.DTOs;
+using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Presentation.Abstraction;
 using EntityFrameworkCorePagination.Nuget.Pagination;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchitecture.Presentation.Controllers;

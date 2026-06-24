@@ -12,10 +12,13 @@ public sealed class RegisterCommandValidator : AbstractValidator<RegisterCommand
 
         RuleFor(p => p.UserName).NotEmpty().WithMessage("Kullanici adi bos olamaz!");
         RuleFor(p => p.UserName).NotNull().WithMessage("Kullanici adi bos olamaz!");
-        RuleFor(p => p.UserName).MinimumLength(3).WithMessage("Arac adi en az uc karakter olmalidir!");
+        RuleFor(p => p.UserName).MinimumLength(3).WithMessage("Kullanici adi en az uc karakter olmalidir!");
 
+        RuleFor(p => p.Password).NotEmpty().WithMessage("Sifre bos olamaz!");
+        RuleFor(p => p.Password).NotNull().WithMessage("Sifre bos olamaz!");
         RuleFor(p => p.Password).Matches("[A-Z]").WithMessage("Sifre en az 1 adet buyuk harf icermelidir!");
         RuleFor(p => p.Password).Matches("[a-z]").WithMessage("Sifre en az 1 adet kucuk harf icermelidir!");
+        RuleFor(p => p.Password).Matches("[0-9]").WithMessage("Sifre en az 1 adet rakam icermelidir!");
         RuleFor(p => p.Password).Matches("[a-zA-Z0-9]").WithMessage("Sifre en az 1 adet ozel karakter icermelidir!");
     }
 }
