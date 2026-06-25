@@ -5,7 +5,7 @@ using GenericRepository;
 
 namespace CleanArchitecture.Persistance.Repositories;
 
-public sealed class CarRepository : Repository<Car, AppDbContext>, ICarRepository
+public sealed class UserRoleRepository : Repository<UserRole, AppDbContext>, IUserRoleRepository
 {
-    public CarRepository(AppDbContext context) : base(context) { }
+    public UserRoleRepository(AppDbContext context) : base(context) { }
 }

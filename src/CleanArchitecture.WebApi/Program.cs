@@ -35,9 +35,13 @@ public class Program
         builder.Services.AddScoped<IMailService, MailService>();
         builder.Services.AddScoped<IRoleService, RoleService>();
 
+        builder.Services.AddScoped<IUserRoleService, UserRoleService>();
+
         builder.Services.AddTransient<ExceptionMiddleware>();
         builder.Services.AddScoped<IUnitOfWork>(srv => srv.GetRequiredService<AppDbContext>());
         builder.Services.AddScoped<ICarRepository, CarRepository>();
+        builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
+
         builder.Services.AddScoped<IJwtProvider, JwtProvider>();
 
         builder.Services.ConfigureOptions<JwtOptionsSetup>();
@@ -46,7 +50,7 @@ public class Program
         builder.Services.AddAuthorization();
 
         builder.Services.AddAutoMapper(typeof(CleanArchitecture.Persistance.AssemblyReference).Assembly);
-        
+
         string connectionString = builder.Configuration.GetConnectionString("SqlServer");
         builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
         builder.Services.AddIdentity<User, Role>(
@@ -60,7 +64,7 @@ public class Program
 
         builder.Services.AddControllers()
             .AddApplicationPart(typeof(CleanArchitecture.Presentation.AssemblyReference).Assembly);
-        
+
         builder.Services.AddMediatR(cfr => cfr.RegisterServicesFromAssembly(typeof(CleanArchitecture.Application.AssemblyReference).Assembly));
 
         builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
