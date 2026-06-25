@@ -1,6 +1,7 @@
 ﻿using CleanArchitecture.Application.Features.UserRoleFeatures.Commands.CreateUserRole;
 using CleanArchitecture.Application.Services;
 using CleanArchitecture.Domain.Repositories;
+using CleanArchitecture.Domain.Entities;
 using GenericRepository;
 
 namespace CleanArchitecture.Persistance.Services;

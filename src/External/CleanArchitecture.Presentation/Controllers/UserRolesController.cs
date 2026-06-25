@@ -12,7 +12,6 @@ public sealed class UserRolesController : ApiController
     public UserRolesController(IMediator mediator) : base(mediator) { }
 
     [HttpPost("[action]")]
-    [AllowAnonymous]
     public async Task<IActionResult> Create(CreateUserRoleCommand request, CancellationToken cancellationToken)
     {
         MessageResponse response = await _mediator.Send(request, cancellationToken);
