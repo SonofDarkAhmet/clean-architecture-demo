@@ -3,9 +3,9 @@ using Microsoft.OpenApi.Models;
 
 namespace CleanArchitecture.WebApi.Configurations;
 
-public sealed class PresentationServiceServiceInstaller : IServiceInstaller
+public sealed class PresentationServiceInstaller : IServiceInstaller
 {
-    public void Install(IServiceCollection services, IConfiguration configuration)
+    public void Install(IServiceCollection services, IConfiguration configuration, IHostBuilder host)
     {
         services.AddCors(options =>
         {

@@ -1,0 +1,27 @@
+info : X.509 certificate chain validation will use the default trust store selected by .NET for code signing.
+info : X.509 certificate chain validation will use the default trust store selected by .NET for timestamping.
+info : Adding PackageReference for package 'Serilog' into project 'src\CleanArchitecture.WebApi\CleanArchitecture.WebApi.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/serilog/index.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/serilog/page/0.1.6/1.2.47.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/serilog/page/1.2.48/1.4.34.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/serilog/page/1.4.39/2.0.0-beta-541.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/serilog/page/2.0.0-rc-556/2.5.0-dev-00814.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/serilog/page/2.5.0-dev-00817/2.8.1-dev-01052.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/serilog/page/2.8.1-dev-01054/2.12.0-dev-01439.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/serilog/page/2.12.0-dev-01445/3.0.0-dev-01787.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/serilog/page/3.0.0-dev-01794/3.0.1.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/serilog/page/3.0.2-dev-02042/4.3.0-dev-02358.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/serilog/page/4.3.0-dev-02360/4.4.0-dev-02437.json
+info : Restoring packages for C:\dev\clean-arch-train\src\CleanArchitecture.WebApi\CleanArchitecture.WebApi.csproj...
+info :   CACHE https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.authentication.jwtbearer/index.json
+info :   CACHE https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.identity.entityframeworkcore/index.json
+info :   CACHE https://api.nuget.org/v3-flatcontainer/microsoft.entityframeworkcore.sqlserver/index.json
+info :   CACHE https://api.nuget.org/v3-flatcontainer/microsoft.entityframeworkcore.tools/index.json
+info :   CACHE https://api.nuget.org/v3/vulnerabilities/index.json
+info :   CACHE https://api.nuget.org/v3-vulnerabilities/2026.06.24.23.51.55/vulnerability.base.json
+info :   CACHE https://api.nuget.org/v3-vulnerabilities/2026.06.24.23.51.55/2026.06.24.23.51.55/vulnerability.update.json
+warn : NU1903: Package 'AutoMapper' 12.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-rvv3-g6hj-g44x
+info : Package 'Serilog' is compatible with all the specified frameworks in project 'src\CleanArchitecture.WebApi\CleanArchitecture.WebApi.csproj'.
+info : PackageReference for package 'Serilog' version '4.3.1' updated in file 'C:\dev\clean-arch-train\src\CleanArchitecture.WebApi\CleanArchitecture.WebApi.csproj'.
+info : Assets file has not changed. Skipping assets file writing. Path: C:\dev\clean-arch-train\src\CleanArchitecture.WebApi\obj\project.assets.json
+log  : Restored C:\dev\clean-arch-train\src\CleanArchitecture.WebApi\CleanArchitecture.WebApi.csproj (in 336 ms).
