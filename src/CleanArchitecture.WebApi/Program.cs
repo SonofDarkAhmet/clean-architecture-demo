@@ -1,16 +1,17 @@
 //using System.Runtime.ConstrainedExecution;
+using CleanArchitecture.Application;
 using CleanArchitecture.Application.Behaviors;
-using CleanArchitecture.Persistance.Context;
+using CleanArchitecture.Application.Abstractions;
 using CleanArchitecture.Application.Services;
+using CleanArchitecture.Persistance.Context;
 using CleanArchitecture.Persistance.Services;
-using CleanArchitecture.Infrastructure.Services;
 using CleanArchitecture.Persistance.Repositories;
+using CleanArchitecture.Infrastructure.Services;
+using CleanArchitecture.Infrastructure.Authentication;
 using CleanArchitecture.Domain.Repositories;
+using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.WebApi.Middleware;
 using CleanArchitecture.WebApi.OptionsSetup;
-using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Application.Abstractions;
-using CleanArchitecture.Infrastructure.Authentication;
 
 using FluentValidation;
 using GenericRepository;
@@ -43,6 +44,7 @@ public class Program
         builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
 
         builder.Services.AddScoped<IJwtProvider, JwtProvider>();
+        builder.Services.AddScoped<IUserProvider<User>, UserProvider>();
 
         builder.Services.ConfigureOptions<JwtOptionsSetup>();
         builder.Services.ConfigureOptions<JwtBearerOptionsSetup>();
