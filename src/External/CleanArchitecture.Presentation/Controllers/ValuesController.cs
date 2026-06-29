@@ -9,6 +9,6 @@ public class ValuesController : ControllerBase
     [HttpGet]
     public IActionResult Get()
     {
-        return Ok("Deneme api islemi basarilidir!");
+        return Ok("Test api operation is successful!");
     }
 }

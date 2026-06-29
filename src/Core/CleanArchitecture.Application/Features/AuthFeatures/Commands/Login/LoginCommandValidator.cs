@@ -6,16 +6,16 @@ public sealed class LoginCommandValidator: AbstractValidator<LoginCommand>
 {
     public LoginCommandValidator()
     {
-        RuleFor(p => p.UserNameOrEmail).NotEmpty().WithMessage("Kullanici adi yada mail bilgisi bos olamaz!");
-        RuleFor(p => p.UserNameOrEmail).NotNull().WithMessage("Kullanici adi yada mail bilgisi  bos olamaz!");
-        RuleFor(p => p.UserNameOrEmail).MinimumLength(3).WithMessage("Kullanici adi yada mail bilgisi en az uc karakter olmalidir!");
+        RuleFor(p => p.UserNameOrEmail).NotEmpty().WithMessage("Username or email information cannot be empty!");
+        RuleFor(p => p.UserNameOrEmail).NotNull().WithMessage("Username or email information cannot be empty!");
+        RuleFor(p => p.UserNameOrEmail).MinimumLength(3).WithMessage("Username or email information must be at least three characters!");
 
-        RuleFor(p => p.Password).NotEmpty().WithMessage("Sifre bos olamaz!");
-        RuleFor(p => p.Password).NotNull().WithMessage("Sifre bos olamaz!");
-        RuleFor(p => p.Password).Matches("[A-Z]").WithMessage("Sifre en az 1 adet buyuk harf icermelidir!");
-        RuleFor(p => p.Password).Matches("[a-z]").WithMessage("Sifre en az 1 adet kucuk harf icermelidir!");
-        RuleFor(p => p.Password).Matches("[0-9]").WithMessage("Sifre en az 1 adet rakam icermelidir!");
-        RuleFor(p => p.Password).Matches("[a-zA-Z0-9]").WithMessage("Sifre en az 1 adet ozel karakter icermelidir!");
+        RuleFor(p => p.Password).NotEmpty().WithMessage("Password cannot be empty!");
+        RuleFor(p => p.Password).NotNull().WithMessage("Password cannot be empty!");
+        RuleFor(p => p.Password).Matches("[A-Z]").WithMessage("Password must contain at least 1 uppercase letter!");
+        RuleFor(p => p.Password).Matches("[a-z]").WithMessage("Password must contain at least 1 lowercase letter!");
+        RuleFor(p => p.Password).Matches("[0-9]").WithMessage("Password must contain at least 1 digit!");
+        RuleFor(p => p.Password).Matches("[a-zA-Z0-9]").WithMessage("Password must contain at least 1 special character!");
     }
 
 }

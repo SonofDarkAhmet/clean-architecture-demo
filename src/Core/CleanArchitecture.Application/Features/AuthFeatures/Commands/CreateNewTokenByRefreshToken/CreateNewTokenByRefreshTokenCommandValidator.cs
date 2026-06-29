@@ -6,10 +6,10 @@ public class CreateNewTokenByRefreshTokenCommandValidator : AbstractValidator<Cr
 {
     public CreateNewTokenByRefreshTokenCommandValidator()
     {
-        RuleFor(p => p.UserId).NotEmpty().WithMessage("Kullanici Id no bilgisi bos olamaz!");
-        RuleFor(p => p.UserId).NotNull().WithMessage("Kullanici Id no bilgisi  bos olamaz!");
-        
-        RuleFor(p => p.RefreshToken).NotEmpty().WithMessage("Token bilgisi bos olamaz!");
-        RuleFor(p => p.RefreshToken).NotNull().WithMessage("Token bilgisi  bos olamaz!");        
+        RuleFor(p => p.UserId).NotEmpty().WithMessage("User Id information cannot be empty!");
+        RuleFor(p => p.UserId).NotNull().WithMessage("User Id information cannot be empty!");
+
+        RuleFor(p => p.RefreshToken).NotEmpty().WithMessage("Token information cannot be empty!");
+        RuleFor(p => p.RefreshToken).NotNull().WithMessage("Token information cannot be empty!");
     }
 }

@@ -40,8 +40,8 @@ public sealed class AuthService : IAuthService
         /* Activate after having a valid stmp server
         List<string> emails = new();
         emails.Add(request.Email);
-        string subject = "Mail Onayi"
-        string body = "Mail basari ile onaylanmistir."
+        string subject = "Mail Confirmation"
+        string body = "Mail has been confirmed successfully."
         await _mailService.SendMailAsync(emails, subject, body); 
         */
     }
@@ -50,7 +50,7 @@ public sealed class AuthService : IAuthService
     {
         User? user = await _userProvider.FindByUserNameOrEmailAsync(request.UserNameOrEmail, cancellationToken);
 
-        if (user == null) throw new Exception("Kullanici bulunamadi!");
+        if (user == null) throw new Exception("User not found!");
 
         var result = await _userProvider.CheckPasswordAsync(user, request.Password);
         if (result)
@@ -59,18 +59,18 @@ public sealed class AuthService : IAuthService
             return response;
         }
 
-        throw new Exception("Sifreyi yanlis girdiniz!");
+        throw new Exception("You entered the wrong password!");
     }
 
     public async Task<LoginCommandResponse> CreateTokenByRefreshAsync(CreateNewTokenByRefreshTokenCommand request, CancellationToken cancellationToken)
     {
         User user = await _userProvider.FindByIdAsync(request.UserId, cancellationToken);
 
-        if (user == null) throw new Exception("Kullanici bulunamadi!");
+        if (user == null) throw new Exception("User not found!");
 
-        if (user.RefreshToken != request.RefreshToken) throw new Exception("Refresh Token gecerli degil!");
+        if (user.RefreshToken != request.RefreshToken) throw new Exception("Refresh Token is not valid!");
 
-        if (user.RefreshTokenExpires < DateTime.Now) throw new Exception("Refresh Tokenin suresi dolmus!");
+        if (user.RefreshTokenExpires < DateTime.Now) throw new Exception("Refresh Token has expired!");
 
         LoginCommandResponse response = await _jwtProvider.CreateTokenAsync(user);
 

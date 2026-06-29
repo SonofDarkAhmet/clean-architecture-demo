@@ -6,7 +6,7 @@ public sealed class CreateRoleCommandValidator : AbstractValidator<CreateRoleCom
 {
     public CreateRoleCommandValidator()
     {
-        RuleFor(p => p.Name).NotEmpty().WithMessage("Role adi bos olamaz!");
-        RuleFor(p => p.Name).NotNull().WithMessage("Role adi bos olamaz!");                
+        RuleFor(p => p.Name).NotEmpty().WithMessage("Role name cannot be empty!");
+        RuleFor(p => p.Name).NotNull().WithMessage("Role name cannot be empty!");
     }
 }

@@ -17,7 +17,7 @@ public sealed class CreateRoleCommandHandler : IRequestHandler<CreateRoleCommand
     public async Task<MessageResponse> Handle(CreateRoleCommand request, CancellationToken cancellationToken)
     {
         await _roleService.CreateAsync(request);
-        return new("Role kaydi basari ile tamamlandi!");
+        return new("Role record completed successfully!");
     }
 }
 

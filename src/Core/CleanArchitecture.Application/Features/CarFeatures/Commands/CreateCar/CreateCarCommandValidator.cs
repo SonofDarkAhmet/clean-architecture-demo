@@ -6,16 +6,16 @@ public sealed class CreateCarCommandValidator : AbstractValidator<CreateCarComma
 {
     public CreateCarCommandValidator()
     {
-        RuleFor(p => p.Name).NotEmpty().WithMessage("Arac adi bos olamaz!");
-        RuleFor(p => p.Name).NotNull().WithMessage("Arac adi bos olamaz!");
-        RuleFor(p => p.Name).MinimumLength(3).WithMessage("Arac adi en az uc karakter olmalidir!");
+        RuleFor(p => p.Name).NotEmpty().WithMessage("Car name cannot be empty!");
+        RuleFor(p => p.Name).NotNull().WithMessage("Car name cannot be empty!");
+        RuleFor(p => p.Name).MinimumLength(3).WithMessage("Car name must be at least three characters!");
 
-        RuleFor(p => p.Model).NotEmpty().WithMessage("Arac modeli bos olamaz!");
-        RuleFor(p => p.Model).NotNull().WithMessage("Arac modeli bos olamaz!");
-        RuleFor(p => p.Model).MinimumLength(3).WithMessage("Arac adi en az uc karakter olmalidir!");
+        RuleFor(p => p.Model).NotEmpty().WithMessage("Car model cannot be empty!");
+        RuleFor(p => p.Model).NotNull().WithMessage("Car model cannot be empty!");
+        RuleFor(p => p.Model).MinimumLength(3).WithMessage("Car model must be at least three characters!");
 
-        RuleFor(p => p.EnginePower).NotEmpty().WithMessage("Arac motor gucu bos olamaz!");
-        RuleFor(p => p.EnginePower).NotNull().WithMessage("Arac motor gucu bos olamaz!");
-        RuleFor(p => p.EnginePower).GreaterThan(0).WithMessage("Arac motor gucu 0'dan buyuk olmalidir!");
+        RuleFor(p => p.EnginePower).NotEmpty().WithMessage("Car engine power cannot be empty!");
+        RuleFor(p => p.EnginePower).NotNull().WithMessage("Car engine power cannot be empty!");
+        RuleFor(p => p.EnginePower).GreaterThan(0).WithMessage("Car engine power must be greater than 0!");
     }
 }
