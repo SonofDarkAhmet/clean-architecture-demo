@@ -1,7 +1,7 @@
 ﻿using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Domain.DTOs;
 
-namespace CleanArchitecture.Application;
+namespace CleanArchitecture.Application.Abstractions;
 
 public interface IUserProvider<T> where T : User
 {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using CleanArchitecture.Application;
+using CleanArchitecture.Application.Abstractions;
 using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Domain.DTOs;
 
